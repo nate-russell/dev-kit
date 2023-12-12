@@ -1,6 +1,7 @@
 import os
 from tqdm.auto import tqdm
 import requests
+import warnings
 _sqlit_chembl = "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/latest/chembl_33_sqlite.tar.gz"
 ROOT_DATA_DIR = "F:\data"
 
@@ -40,20 +41,29 @@ def fetch_file(url,out_path,verbose=True):
         print("ERROR, something went wrong")
     return out_path
 
+def make_dir_path(path):
+    mode = 0o666
+    if not os.path.exists(path):
+        os.makedirs(path, mode)
 
 def download_iuphar():
     d = os.path.abspath(ROOT_DATA_DIR)
-    mode = 0o666
-    path = os.path.join(d, 'IUPHAR')
-    if not os.path.exists(path):
-        os.makedirs(path, mode)
+    make_dir_path(os.path.join(d, 'IUPHAR'))
 
     file_path = os.path.join(d,'IUPHAR','interactions.csv')
     fetch_file('https://www.guidetopharmacology.org/DATA/interactions.csv',file_path)
 
-
 def test_data_dir_write():
-    
+    """
+    _summary_
+
+    Raises
+    ------
+    ValueError
+        _description_
+    FileExistsError
+        _description_
+    """
     d = os.path.abspath(ROOT_DATA_DIR)
     txt = 'test file used to test wrx permissions'
 

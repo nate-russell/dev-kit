@@ -2,13 +2,15 @@ import os
 from tqdm.auto import tqdm
 import requests
 import warnings
+import pandas as pd
 _sqlit_chembl = "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/latest/chembl_33_sqlite.tar.gz"
 ROOT_DATA_DIR = "F:\data"
 
 
 def fetch_file(url,out_path,verbose=True):
     """
-    _summary_
+    downloads url contents to out_path
+    https://stackoverflow.com/questions/37573483/progress-bar-while-download-file-over-http-with-requests
 
     Parameters
     ----------
@@ -53,6 +55,44 @@ def download_iuphar():
     file_path = os.path.join(d,'IUPHAR','interactions.csv')
     fetch_file('https://www.guidetopharmacology.org/DATA/interactions.csv',file_path)
 
+
+def fetch_data():
+    # Check if data exists and it's hash is right
+    # if data isn't read fetch it
+    # return data
+    pass
+
+class DataCatalog:
+
+    def __init__(self) -> None:
+        pass
+
+    def catalog_as_df(self) -> pd.DataFrame:
+        pass
+
+    def catalog_as_records_dict(self) -> dict:
+        pass
+
+    def load_df(self,file) -> pd.DataFrame:
+        pass
+
+    
+
+
+
+
+aliagas_benchmark = pd.read_csv(
+    "https://static-content.springer.com/esm/art%3A10.1007%2Fs10822-015-9838-3/MediaObjects/10822_2015_9838_MOESM1_ESM.csv"
+)
+
+def download_biodgen_adme():
+    d = os.path.abspath(ROOT_DATA_DIR)
+    make_dir_path(os.path.join(d, 'Biogen_ADME'))
+
+    file_path = os.path.join(d,'Biogen_ADME','ADME_public_set_3521.csv')
+    url = "https://raw.githubusercontent.com/molecularinformatics/Computational-ADME/main/ADME_public_set_3521.csv"
+    fetch_file(url,file_path)
+    
 def test_data_dir_write():
     """
     _summary_

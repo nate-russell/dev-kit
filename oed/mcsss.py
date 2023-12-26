@@ -197,8 +197,28 @@ class MultiCriteriaSubSetSolver():
                     callback=t.update,
                     verbose=False
                     )
-        
         return res
+    
+    def _gather_results(self,res):
+        historical_x = []
+        historical_f = []
+        generation = []
+        for i,e in enumerate(res.history):
+            for opt in e.opt:
+                historical_x.append(opt.X)
+                historical_f.append(opt.F)
+                generation.append(i)
+
+        X = np.vstack(historical_x)
+        minF = np.vstack(historical_f)
+        F = minF * np.array([-1,-1,-1])
+
+        # pareto optimal
+
+
+        return  generation, X, F, minF
+    
+
 
     def presolve(self):
         pass

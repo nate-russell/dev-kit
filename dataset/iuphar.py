@@ -56,6 +56,21 @@ def download_iuphar():
     fetch_file('https://www.guidetopharmacology.org/DATA/interactions.csv',file_path)
 
 
+def download_drugs_and_probes():
+    targets = 'https://www.probes-drugs.org/media/download/targets/pd_export_02_2023_targets_standardized.csv'
+    compounds = 'https://www.probes-drugs.org/media/download/compounds/pd_export_02_2023_compounds_standardized.csv'
+    
+    d = os.path.abspath(ROOT_DATA_DIR)
+    make_dir_path(os.path.join(d, 'PROBES_AND_DRUGS'))
+
+    t_path = os.path.join(d,'PROBES_AND_DRUGS','targets.csv')
+    c_path = os.path.join(d,'PROBES_AND_DRUGS','compounds.csv')
+    fetch_file(targets,t_path)
+    fetch_file(compounds,c_path)
+
+
+
+
 def fetch_data():
     # Check if data exists and it's hash is right
     # if data isn't read fetch it
@@ -121,6 +136,7 @@ def test_data_dir_write():
 
 if __name__ == "__main__":
     test_data_dir_write()
-    download_iuphar()
+    download_drugs_and_probes()
+    #download_iuphar()
     print('all systems go')
 

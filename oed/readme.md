@@ -1,4 +1,4 @@
-# Optimal Subset Selection for Multi-Criteria experiments
+# MOOSSSE: Multi Objective Optimal Sub-Set Selection for Experiments
  
 ## Intro
 Experimentation is a central pillar of science. In the physical and life sciences, their design is often one of the most important decisions made by any lab/organization. They are often expensive, time consuming, complex and even if you do everything right, they often yield uncertain results. Rigourous statistical analysis is often applied to experimental results but too often that same level of rigour is missing from the selection/design process. 

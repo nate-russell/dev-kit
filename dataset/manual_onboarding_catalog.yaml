@@ -1,0 +1,31 @@
+data:
+     probes_and_drugs_targets:
+          url: https://www.probes-drugs.org/media/download/targets/pd_export_02_2023_targets_standardized.csv
+          dir: PROBES_AND_DRUGS
+          fname: pd_targets.csv
+          notes: todo
+     probes_and_drugs_compounds:
+          url: https://www.probes-drugs.org/media/download/compounds/pd_export_02_2023_compounds_standardized.csv
+          dir: PROBES_AND_DRUGS
+          fname: pd_compounds.csv
+          notes: todo
+     IUPHAR_interactions:
+          url: https://www.guidetopharmacology.org/DATA/interactions.csv
+          dir: IUPHAR
+          fname: iuphar_interactions.csv
+          notes: todo
+     biogen_adme:
+          url: https://raw.githubusercontent.com/molecularinformatics/Computational-ADME/main/ADME_public_set_3521.csv
+          dir: Biogen_ADME
+          fname: ADME_public_set_3521.csv
+          notes: todo
+     aliagas:
+          url: https://static-content.springer.com/esm/art%3A10.1007%2Fs10822-015-9838-3/MediaObjects/10822_2015_9838_MOESM1_ESM.csv
+          dir: aliagas
+          fname: aliagas.csv
+          notes: https://pubmed.ncbi.nlm.nih.gov/35359246/
+     placeholder:
+          url: a 
+          dir: a
+          fname: a 
+          notes: a

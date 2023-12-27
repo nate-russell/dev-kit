@@ -83,7 +83,7 @@ class DataCatalog:
 
     def __init__(self,data_dir=ROOT_DATA_DIR) -> None:
         self.root_data_dir = data_dir
-        manual_yaml = "F:\git_repos\dev-kit\dataset\manual_onboarding_catalog.yaml"
+        manual_yaml = os.path.join(os.path.dirname(__file__), 'manual_onboarding_catalog.yaml')
         with open(manual_yaml,"r") as stream:
             try:
                 records = []

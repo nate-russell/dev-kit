@@ -1,0 +1,33 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project]
+name = "devkit"
+version = "0.0.1"
+dependencies = [
+  "rdkit",
+  "seaborn"
+]
+requires-python = ">=3.8"
+authors = [
+  {name = "Nathan Russell", email = "readriderussell@gmail.com"},
+]
+maintainers = [
+  {name = "Nathan Russell", email = "readriderussell@gmail.com"},
+]
+
+description = "Used for developing ideas and tools before they are mature enough to spin off into their own project. Also has some portable utilities/examples that I find myself using often"
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["rdkit",'pandas','machine learning','drug design']
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python"
+]
+
+
+[project.urls]
+Homepage = "https://github.com/nate-russell/dev-kit"
+Repository = "https://github.com/nate-russell/dev-kit.git"
+"Bug Tracker" = "https://github.com/nate-russell/dev-kit/issues"

@@ -1,1 +1,1 @@
-from .gpu_cpu_stats_monitor import NvidiaSmiLog
+from .gpu_cpu_stats_monitor import ComputeResourceLog

@@ -7,7 +7,15 @@ name = "devkit"
 version = "0.0.1"
 dependencies = [
   "rdkit",
-  "seaborn"
+  "seaborn",
+  "torch",
+  "torchvision",
+  "pytorch-lightning",
+  "botorch",
+  "gpytorch",
+  "pymoo",
+  "ax-platform",
+  "hiplot"
 ]
 requires-python = ">=3.8"
 authors = [

@@ -47,6 +47,20 @@ autoencoder = LitAutoEncoder(lr=1e-3, inp_size=28)
 # setup data
 batch_size = 32
 dataset = MNIST(os.getcwd(), download=True, transform=ToTensor())
+
+import matplotlib.pyplot as plt
+print(dataset.data[0].numpy(),dataset.targets[0].numpy())
+x = dataset.data[0].numpy()
+plt.figure()
+plt.imshow(x)
+plt.show()
+print(x)
+
+plt.scatter([1,2],[4,1])
+plt.show()
+
+
+"""
 train_loader = utils.data.DataLoader(dataset, shuffle=True)
 
 # initialise the wandb logger and name your wandb project
@@ -56,10 +70,11 @@ wandb_logger = WandbLogger(project='my-awesome-project')
 wandb_logger.experiment.config["batch_size"] = batch_size
 
 # pass wandb_logger to the Trainer 
-trainer = pl.Trainer(limit_train_batches=75000, max_epochs=30, logger=wandb_logger)
+trainer = pl.Trainer(limit_train_batches=7500, max_epochs=5, logger=wandb_logger)
 
 # train the model
 trainer.fit(model=autoencoder, train_dataloaders=train_loader)
 
 # [optional] finish the wandb run, necessary in notebooks
 wandb.finish()
+"""

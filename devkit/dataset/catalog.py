@@ -1,4 +1,4 @@
-import os
+import os, zipfile
 from tqdm.auto import tqdm
 import requests
 import warnings
@@ -7,6 +7,25 @@ import yaml
 from collections import defaultdict
 _sqlit_chembl = "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/latest/chembl_33_sqlite.tar.gz"
 ROOT_DATA_DIR = "F:\data"
+
+
+
+def unzip_to_data_subdir(zip_path,subdir_name):
+    d = os.path.abspath(ROOT_DATA_DIR)
+    subdir_path = os.path.join(d, subdir_name)
+    make_dir_path(subdir_path)
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(subdir_path)
+
+def get_subdir_files_as_dict(subdir_name):
+    d = os.path.abspath(ROOT_DATA_DIR)
+    subdir_path = os.path.join(d, subdir_name)
+    all_files = {}
+    for root, dirs, files in os.walk(subdir_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            all_files[file] = (file_path)
+    return all_files
 
 
 def fetch_file(url,out_path,verbose=True):
@@ -70,7 +89,11 @@ def download_drugs_and_probes():
     fetch_file(targets,t_path)
     fetch_file(compounds,c_path)
 
-
+def make_data_path(file_name,subdir_name):
+    d = os.path.abspath(ROOT_DATA_DIR)
+    make_dir_path(os.path.join(d, subdir_name))
+    path = os.path.join(d,subdir_name,file_name)
+    return path
 
 
 def fetch_data():

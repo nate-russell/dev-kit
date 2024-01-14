@@ -1,1 +1,1 @@
-from .catalog import DataCatalog
+from .catalog import DataCatalog, fetch_file, unzip_to_data_subdir, get_subdir_files_as_dict

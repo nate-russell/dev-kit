@@ -15,7 +15,12 @@ dependencies = [
   "gpytorch",
   "pymoo",
   "ax-platform",
-  "hiplot"
+  "hiplot",
+  "umap-learn",
+  "plolty",
+  "dash",
+  "dash_bootstrap_components",
+  "pynndescent",
 ]
 requires-python = ">=3.8"
 authors = [

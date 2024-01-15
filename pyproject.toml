@@ -17,7 +17,6 @@ dependencies = [
   "ax-platform",
   "hiplot",
   "umap-learn",
-  "plolty",
   "dash",
   "dash_bootstrap_components",
   "pynndescent",

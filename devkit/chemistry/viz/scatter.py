@@ -151,6 +151,28 @@ def mol_dash_scatter(x,y,c,smi,draw_func=smi_to_dash):
     # Create Dash app layout
     rstr = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(5))
     app = dash.Dash(f"{__name__}_{rstr}",external_stylesheets=[dbc.themes.ZEPHYR])
+
+    import plotly.graph_objects as go # or plotly.express as px
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Scattergl(
+            x = x,
+            y = y,
+            mode = 'markers',
+            text=smi,
+            marker={'size': 12,'color': c,'colorscale': 'Viridis'}
+        )
+    )
+    fig.update_layout(
+        hovermode = 'closest',
+        title = 'Scatter Plot of Molecules',
+        height = 800,
+        width = 800
+    )
+    graph = dcc.Graph(figure=fig,id='scatter-plot')
+
+    """
     graph = dcc.Graph(
             id='scatter-plot',
             figure={
@@ -175,6 +197,7 @@ def mol_dash_scatter(x,y,c,smi,draw_func=smi_to_dash):
                 }
             }
         )
+    """
     row = dbc.Row(
             [
                 dbc.Col(html.Div([graph])),

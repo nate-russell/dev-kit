@@ -36,8 +36,8 @@ def svg_2_dash_img(svg_str, dash_id=None):
     return drawing
 
 def mol_to_svg(mol):
-    h = 200
-    w = 300
+    h = 500
+    w = 500
     d2d = Chem.Draw.MolDraw2DSVG(w * 1, h * 1, w, h)
     d2d.drawOptions().addStereoAnnotation = True
     d2d.drawOptions().maxFontSize = -1
@@ -161,14 +161,20 @@ def mol_dash_scatter(x,y,c,smi,draw_func=smi_to_dash):
             y = y,
             mode = 'markers',
             text=smi,
-            marker={'size': 12,'color': c,'colorscale': 'Viridis'}
+            marker={'size': 12,'color': c,'colorscale': 'Viridis'},
+            hoverinfo=None,
+            hovertext="",
+            #hoverinfo='skip'
+
         )
     )
     fig.update_layout(
-        hovermode = 'closest',
+        #hovermode = 'closest',
         title = 'Scatter Plot of Molecules',
-        height = 800,
-        width = 800
+        height = 600,
+        width = 600,
+        #hoverinfo=None,
+        #hovertext=None,
     )
     graph = dcc.Graph(figure=fig,id='scatter-plot')
 
@@ -192,8 +198,8 @@ def mol_dash_scatter(x,y,c,smi,draw_func=smi_to_dash):
                 'layout': {
                     'hovermode': 'closest',
                     'title': 'Scatter Plot of Molecules',
-                    'height':'800px',
-                    'width':'800px'
+                    'height':'600px',
+                    'width':'600px'
                 }
             }
         )
@@ -222,4 +228,4 @@ def mol_dash_scatter(x,y,c,smi,draw_func=smi_to_dash):
                 dash_img
             ])
             
-    app.run_server(debug=True)
+    app.run_server(jupyter_mode="tab",debug=True)

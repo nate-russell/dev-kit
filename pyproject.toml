@@ -20,6 +20,8 @@ dependencies = [
   "dash",
   "dash_bootstrap_components",
   "pynndescent",
+  "gauche", # gaussian proccess kernels for small molecules
+  "mordred", #  networkx-2.8.8 <- not super but 
 ]
 requires-python = ">=3.8"
 authors = [

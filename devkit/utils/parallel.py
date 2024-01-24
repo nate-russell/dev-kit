@@ -29,6 +29,11 @@ def tqdm_imap(iterable,function,n_procs=None,chunksize=100):
     ValueError
         _description_
     """
+    
+    try:
+        f_name = function.__name__
+    except AttributeError:
+        f_name = "UNKNOWN_FUNCTION"
 
     if n_procs is None:
         n_procs = cpu_count()
@@ -39,12 +44,12 @@ def tqdm_imap(iterable,function,n_procs=None,chunksize=100):
         with Pool(processes=n_procs) as pool:
             p = pool.imap(function, iterable, chunksize=chunksize)
             res = [r for r in tqdm(p,
-                                desc=f'IMAP f={function.__name__} N={n_procs} ChunkSize={chunksize}',
+                                desc=f'IMAP f={f_name} N={n_procs} ChunkSize={chunksize}',
                                 total=len(iterable))
                                 ]
     else:
         # useful for debugging
-        res = [function(i) for i in tqdm(iterable,desc=f'Serial f={function.__name__}')]
+        res = [function(i) for i in tqdm(iterable,desc=f'Serial f={f_name}')]
 
     return res
 

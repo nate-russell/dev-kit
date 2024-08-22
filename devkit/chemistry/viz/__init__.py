@@ -1,1 +1,2 @@
 from .scatter import mol_dash_scatter, smi_to_dash, smi_pair_to_dash
+from .annotate import COMMON_HETEROCYLES_AND_FUNCTIONAL_GROUPS, draw_mol_with_annotations
